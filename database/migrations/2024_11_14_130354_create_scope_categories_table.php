@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('scope_categories', function (Blueprint $table) {
             $table->bigIncrements('scs_id');
             $table->string('scs_name');
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'scs_updated_at');
+            $table->renameColumn('created_at', 'scs_created_at');
             $table->unsignedBigInteger('scs_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('scs_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('scs_updated_by')->unsigned()->nullable();

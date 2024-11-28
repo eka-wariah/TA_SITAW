@@ -12,7 +12,9 @@ class ScopeCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $scope_categories = scope_categories::all();
+        
+        return view('admin.scope.index', compact(['scope_categories']));
     }
 
     /**
@@ -20,7 +22,7 @@ class ScopeCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.scope.create');
     }
 
     /**
@@ -28,7 +30,13 @@ class ScopeCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $createScopeCategories = scope_categories::create([
+            'scs_name' => $request->scs_name
+        ]);
+        return redirect('/admin/scope_category');
+
+        
     }
 
     /**
@@ -42,24 +50,32 @@ class ScopeCategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(scope_categories $scope_categories)
+    public function edit(scope_categories $scope_categories, $id)
     {
-        //
+        $editScopeCategories = scope_categories::findOrFail($id);        
+        return view('admin.scope.edit',compact(['editScopeCategories']));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, scope_categories $scope_categories)
+    public function update(Request $request, scope_categories $scope_categories, $id)
     {
-        //
+        $updateScopeCategories = scope_categories::findOrFail($id); 
+        $updateScopeCategories->scs_name = $request->scs_name;
+        $updateScopeCategories->save();
+        return redirect('/admin/scope_category');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(scope_categories $scope_categories)
+    public function destroy(scope_categories $scope_categories, $id)
     {
-        //
+        $destroyScopeCategories = scope_categories::findOrFail($id);
+        //dd ($destroyScopeCategories);
+        $destroyScopeCategories->delete();
+        return redirect('/admin/scope_category');
     }
 }
