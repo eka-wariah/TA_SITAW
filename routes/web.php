@@ -22,6 +22,10 @@ Route::get('/master',function(){
     return view('admin.profile.content');
 });
 
+Route::get('/login2',function(){
+    return view('auth.login2');
+});
+
 Route::get('/admin/administrator', [AdministratorsController::class, 'index'])->name('administrator');
 
 
@@ -30,4 +34,4 @@ Route::get('/admin/scope_category/create', [ScopeCategoriesController::class, 'c
 Route::post('/admin/scope_category/create', [ScopeCategoriesController::class, 'store'])->name('scope_category.store');
 Route::get('/admin/scope_category/{id}/edit',[ScopeCategoriesController::class, 'edit'])->name('scope_category.edit');
 Route::post('/admin/scope_category/{id}/edit',[ScopeCategoriesController::class, 'update'])->name('scope_category.update');
-Route::get('/admin/scope_category/{id}/destroy',[ScopeCategoriesController::class, 'destroy'])->name('scope_category.destroy');
+Route::delete('/admin/scope_category/{id}/destroy',[ScopeCategoriesController::class, 'destroy'])->name('scope_category.destroy');

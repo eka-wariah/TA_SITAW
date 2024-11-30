@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\scope_categories;
 use Illuminate\Http\Request;
+Use Alert;
+
 
 class ScopeCategoriesController extends Controller
 {
@@ -13,7 +15,9 @@ class ScopeCategoriesController extends Controller
     public function index()
     {
         $scope_categories = scope_categories::all();
-        
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return view('admin.scope.index', compact(['scope_categories']));
     }
 
@@ -34,6 +38,8 @@ class ScopeCategoriesController extends Controller
         $createScopeCategories = scope_categories::create([
             'scs_name' => $request->scs_name
         ]);
+        Alert::success('Berhasil Menambah', 'Berhasil menambahkan kategori lingkup wilayah');
+
         return redirect('/admin/scope_category');
 
         

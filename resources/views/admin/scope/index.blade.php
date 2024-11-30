@@ -41,7 +41,7 @@
                                 <td>{{$scope_categories->scs_name}}</td>
                                 <td>
                                      <a href="/admin/scope_category/{{$scope_categories->scs_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/admin/scope_category/{{$scope_categories->scs_id}}/destroy" class="btn btn-danger">Delete</a>
+                                     <a href="/admin/scope_category/{{$scope_categories->scs_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
 
                                 </td>
 
