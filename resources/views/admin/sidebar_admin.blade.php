@@ -302,7 +302,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/admin/pay_category" aria-expanded="false">
+              <a class="sidebar-link" href="/admin/payment_category" aria-expanded="false">
                 <span>
                   <i class="ti ti-currency-dollar"></i>
                 </span>

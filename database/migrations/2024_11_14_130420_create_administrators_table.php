@@ -16,6 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('adm_name_id');
             $table->unsignedBigInteger('adm_email_id');
             $table->unsignedBigInteger('adm_scope_management_id');
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'adm_updated_at');
+            $table->renameColumn('created_at', 'adm_created_at');
             $table->unsignedBigInteger('adm_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('adm_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('adm_updated_by')->unsigned()->nullable();

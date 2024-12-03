@@ -15,7 +15,10 @@ return new class extends Migration
             $table->bigIncrements('otp_id');
             $table->string('otp_name');
             $table->BigInteger('otp_total_expenditure');
-            $table->string('otp_status');               
+            $table->string('otp_status');    
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'otp_updated_at');
+            $table->renameColumn('created_at', 'otp_created_at');           
             $table->unsignedBigInteger('otp_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('otp_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('otp_updated_by')->unsigned()->nullable();

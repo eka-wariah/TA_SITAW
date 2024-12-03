@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('cmp_evidence');
             $table->string('cmp_location');
             $table->unsignedBigInteger('cmp_scope_id');
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'cmp_updated_at');
+            $table->renameColumn('created_at', 'cmp_created_at');
             $table->unsignedBigInteger('cmp_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('cmp_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('cmp_updated_by')->unsigned()->nullable();

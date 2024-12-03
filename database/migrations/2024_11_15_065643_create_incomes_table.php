@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('icm_month');   
             $table->unsignedBigInteger('icm_quantity_id');
             $table->string('icm_status');
-                        
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'icm_updated_at');
+            $table->renameColumn('created_at', 'icm_created_at');
             $table->unsignedBigInteger('icm_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('icm_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('icm_updated_by')->unsigned()->nullable();

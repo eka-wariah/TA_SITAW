@@ -15,6 +15,9 @@ return new class extends Migration
             $table->bigIncrements('pyc_id');
             $table->string('pyc_name');
             $table->BigInteger('pyc_price');
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'pyc_updated_at');
+            $table->renameColumn('created_at', 'pyc_created_at');
             $table->unsignedBigInteger('pyc_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('pyc_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('pyc_updated_by')->unsigned()->nullable();

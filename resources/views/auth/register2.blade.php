@@ -8,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon icon-->
-  <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/logos/favicon.png')}}" />
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
 
   <!-- Core Css -->
-  <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
 
   <title>Modernize Bootstrap Admin</title>
 </head>
@@ -32,48 +32,47 @@
                   <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
                   <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
                 </a>
+                
                 <div class="position-relative text-center my-4">
-                  <p class="mb-0 fs-4 px-3 d-inline-block bg-white z-index-5 position-relative">Login</p>
+                  <p class="mb-0 fs-4 px-3 d-inline-block bg-white z-index-5 position-relative">Register</p>
                   <span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
                 </div>
                 @foreach ($errors->all() as $error)
-         <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
-             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-             <strong class="text-center">{{ $error }} </strong> 
-           </div>
-         @endforeach
-                @error('email')
                 <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
-                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                  <strong class="text-center">Username atau Password Salah </strong> 
-                </div>
-                @enderror
-                <form method="POST" action="{{ route('login') }}">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong class="text-center">{{ $error }} </strong> 
+                  </div>
+                @endforeach
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">{{ __('Email') }}</label>
-                    <input type="email" id="email" class="form-control" aria-describedby="emailHelp" name="email" :value="old('email')" required autofocus autocomplete="username"/>
+                    <label for="exampleInputEmail1" class="form-label">{{ __('Name') }}</label>
+                    <input type="text" class="form-control" id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" aria-describedby="textHelp">
                   </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">{{ __('Email') }}</label>
+                    <input type="email" class="form-control" id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Daftar Sebagai</label>
+                    <select class="form-select mr-sm-2" id="inlineFormCustomSelect" name="role">
+                        <option selected>Pilih...</option>
+                        <option value="1">Pengelola Keuangan</option>
+                        <option value="2">Warga</option>
+                    </select>
+                  </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">{{ __('Password') }}</label>
-                    <input type="password" class="form-control" id="password" name="password" required autocomplete="current-password"/>
+                    <input type="password" class="form-control" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password">
                   </div>
-                  <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="form-check">
-                      <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label text-dark" for="flexCheckChecked">
-                        {{ __('Remember me') }}
-                      </label>
-                    </div>
-                    <a class="text-primary fw-medium" href="../main/authentication-forgot-password.html">Forgot
-                      Password ?</a>
-                  </div>
-                  
-                  <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="{{ __('Log in') }}">
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Ulangi Password</label>
+                    <input  class="form-control" id="password_confirmation"  type="password" name="password_confirmation" required autocomplete="new-password" >
+                  </div>
+                  <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="{{ __('Register') }}">
                   <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-medium">New to Modernize?</p>
-                    <a class="text-primary fw-medium ms-2" href="/register2">Create an
-                      account</a>
+                    <p class="fs-4 mb-0 fw-medium">Already have an Account?</p>
+                    <a class="text-primary fw-medium ms-2" href="/login2">Sign In</a>
                   </div>
                 </form>
               </div>
@@ -236,11 +235,11 @@
   </div>
   <div class="dark-transparent sidebartoggler"></div>
   <!-- Import Js Files -->
-  <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ asset('assets/libs/simplebar/dist/simplebar.min.js')}}"></script>
-  <script src="{{ asset('assets/js/theme/app.init.js')}}"></script>
-  <script src="{{ asset('assets/js/theme/theme.js')}}"></script>
-  <script src="{{ asset('assets/js/theme/app.min.js')}}"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../assets/js/theme/app.init.js"></script>
+  <script src="../assets/js/theme/theme.js"></script>
+  <script src="../assets/js/theme/app.min.js"></script>
 
   <!-- solar icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>

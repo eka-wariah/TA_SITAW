@@ -16,7 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('wtb_name_id');
             $table->unsignedBigInteger('wtb_category_trash_id');
             $table->BigInteger('wtb_total_wate');
-            $table->string('wtb_total_money');               
+            $table->string('wtb_total_money');  
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'wtb_updated_at');
+            $table->renameColumn('created_at', 'wtb_created_at');             
             $table->unsignedBigInteger('wtb_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('wtb_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('wtb_updated_by')->unsigned()->nullable();

@@ -15,6 +15,9 @@ return new class extends Migration
             $table->bigIncrements('trc_id');
             $table->string('trc_name');
             $table->BigInteger('trc_price');
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'trc_updated_at');
+            $table->renameColumn('created_at', 'trc_created_at');
             $table->unsignedBigInteger('trc_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('trc_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('trc_updated_by')->unsigned()->nullable();

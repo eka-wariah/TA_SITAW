@@ -17,7 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('pym_category_pay_id');
             $table->BigInteger('pym_total');
             $table->string('pym_type_payment');    
-            $table->BigInteger('pym_quantity');            
+            $table->BigInteger('pym_quantity'); 
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'pym_updated_at');
+            $table->renameColumn('created_at', 'pym_created_at');           
             $table->unsignedBigInteger('pym_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('pym_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('pym_updated_by')->unsigned()->nullable();

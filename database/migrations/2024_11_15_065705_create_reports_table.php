@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('rpt_income_id');
             $table->unsignedBigInteger('rpt_output_id');
             $table->BigInteger('rpt_remaining_balance');
-                        
+            $table->timestamps();
+            $table->renameColumn('updated_at', 'rpt_updated_at');
+            $table->renameColumn('created_at', 'rpt_created_at');           
             $table->unsignedBigInteger('rpt_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('rpt_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('rpt_updated_by')->unsigned()->nullable();
