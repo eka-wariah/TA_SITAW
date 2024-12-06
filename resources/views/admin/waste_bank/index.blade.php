@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SITAW | Daftar Kategori Sampah
+    SITAW | Daftar Bank Sampah
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="mb-5 position-relative">
                     <h4 class="card-title mb-0">Daftar Kategori</h4>
-                    <a href="/admin/trash_category/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Kategori</a>
+                    <a href="/admin/waste_bank/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Kategori</a>
                 </div>
                 <p class="card-subtitle mb-3">
                     
@@ -27,22 +27,26 @@
                             <tr>
                                 <th width="10%">No</th>
                                 <th>Nama</th>
-                                <th>Email</th>
+                                <th>Kategori</th>
+                                <th>Jumlah Sampah</th>
+                                <th>Jumlah Uang</th>
                                 
                             </tr>
                             <!-- end row -->
                         </thead>
                         <tbody>
                             <!-- start row -->
-                            @foreach ( $users as $no=> $user)
+                            @foreach ( $waste_banks as $no=> $waste_banks)
                             <tr>
                                 
                                 <td>{{$no+1}}</td>
-                                <td>{{ $user_name}}</td>
-                                <td>{{ $user_email}}</td>
+                                <td>{{ $waste_banks->wtb_name_id}}</td>
+                                <td>{{ $waste_banks->wtb_category_trash_id}}</td>
+                                <td>{{ $waste_banks->wtb_total_wate}}</td>
+                                <td>{{ $waste_banks->wtb_total_money}}</td>
                                 <td>
-                                     <a href="/admin/trash_category/{{ $users->trc_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/admin/trash_category/{{ $users->trc_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                                     <a href="/admin/waste_bank/{{ $waste_banks->wtb_id}}/edit" class="btn btn-primary">Edit</a>
+                                     <a href="/admin/waste_bank/{{ $waste_banks->wtb_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
 
                                 </td>
 

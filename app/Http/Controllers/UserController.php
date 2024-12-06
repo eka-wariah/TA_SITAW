@@ -2,31 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\members;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Auth;
+use App\Models\User;
 Use Alert;
 
-class MembersController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = \App\Models\User::all(); 
-        $user = Auth::user(); // Get the currently authenticated user
-        $userId = $user ? $user->usr_id : null; // Safely get the user's ID
-        $user_name = Auth::user()->name;
-        $user_email = Auth::user()->email;
-
-        
+        $users = User::all();
         $title = 'Delete User!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
-        
-        return view('admin.member.index', compact('userId', 'user_name', 'user_email'));
+
+        // Return view with users data
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -48,7 +42,7 @@ class MembersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(members $members)
+    public function show(string $id)
     {
         //
     }
@@ -56,7 +50,7 @@ class MembersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(members $members)
+    public function edit(string $id)
     {
         //
     }
@@ -64,7 +58,7 @@ class MembersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, members $members)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -72,8 +66,10 @@ class MembersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(members $members)
+    public function destroy(User $user, $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin/users');
     }
 }

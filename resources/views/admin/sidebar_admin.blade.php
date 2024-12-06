@@ -38,6 +38,14 @@
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
               <a class="sidebar-link" href="/admin/member" id="get-url" aria-expanded="false">
+                <!--<span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Kelola Data Warga</span>-->
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/users" id="get-url" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
@@ -61,7 +69,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/admin/trash_bank" aria-expanded="false">
+              <a class="sidebar-link" href="/admin/waste_bank" aria-expanded="false">
                 <span>
                   <i class="ti ti-wallet"></i>
                 </span>
@@ -69,6 +77,8 @@
               </a>
             </li>
             
+            
+
             <!-- ---------------------------------- -->
             <!-- Frontend page -->
             <!-- ---------------------------------- -->

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class RoleSeeder extends Seeder
+class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -32,5 +32,19 @@ class RoleSeeder extends Seeder
             ], 
             ['name' => 'member']
         );
+
+        $permission = Permission::updateOrCreate([
+            'name' => 'view_dashboard',
+        ],
+        ['name' => 'view_dashboard']
+    );
+
+    $permission2 = Permission::updateOrCreate([
+        'name' => 'view_dashboard_administrator',
+    ],
+    ['name' => 'view_dashboard']
+);
+
+    $role_admin->givePermissionTo($permission);
     }
 }

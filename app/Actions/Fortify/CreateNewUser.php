@@ -41,6 +41,8 @@ class CreateNewUser implements CreatesNewUsers
                 $createUser->assignRole('Administrator');
             }elseif($input['role'] == 2){
                 $createUser->assingRole('member');
+            }else{
+                $createUser->assignRole('admin');
             }
                 return $createUser;
         

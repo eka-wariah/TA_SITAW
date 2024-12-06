@@ -66,4 +66,9 @@ class User extends Authenticatable
         ];
     }
     protected $primaryKey ='usr_id';
+
+    public function wasteBanks()
+    {
+        return $this->hasMany(waste_banks::class, 'wtb_name_id');
+    }
 }

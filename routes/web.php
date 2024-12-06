@@ -5,6 +5,9 @@ use App\Http\Controllers\AdministratorsController;
 use App\Http\Controllers\ScopeCategoriesController;
 use App\Http\Controllers\TrashCategoriesController;
 use App\Http\Controllers\PaymentCategoriesController;
+use App\Http\Controllers\WasteBanksController;
+use App\Http\Controllers\MembersController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,3 +59,11 @@ Route::post('/admin/payment_category/create', [PaymentCategoriesController::clas
 Route::get('/admin/payment_category/{id}/edit',[PaymentCategoriesController::class, 'edit'])->name('payment_category.edit');
 Route::post('/admin/payment_category/{id}/edit',[PaymentCategoriesController::class, 'update'])->name('payment_category.update');
 Route::delete('/admin/payment_category/{id}/destroy',[PaymentCategoriesController::class, 'destroy'])->name('payment_category.destroy');
+
+Route::get('/admin/waste_bank', [WasteBanksController::class, 'index'])->name('waste_bank');
+Route::get('/admin/waste_bank/create', [WasteBanksController::class, 'create'])->name('waste_bank.create');
+Route::post('/admin/waste_bank/create', [WasteBanksController::class, 'store'])->name('waste_bank.store');
+
+
+Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
+Route::delete('/admin/users/{id}',[UserController::class, 'destroy'])->name('users.destroy');
