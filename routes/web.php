@@ -58,11 +58,13 @@ Route::get('/admin/payment_category/create', [PaymentCategoriesController::class
 Route::post('/admin/payment_category/create', [PaymentCategoriesController::class, 'store'])->name('payment_category.store');
 Route::get('/admin/payment_category/{id}/edit',[PaymentCategoriesController::class, 'edit'])->name('payment_category.edit');
 Route::post('/admin/payment_category/{id}/edit',[PaymentCategoriesController::class, 'update'])->name('payment_category.update');
-Route::delete('/admin/payment_category/{id}/destroy',[PaymentCategoriesController::class, 'destroy'])->name('payment_category.destroy');
 
 Route::get('/admin/waste_bank', [WasteBanksController::class, 'index'])->name('waste_bank');
 Route::get('/admin/waste_bank/create', [WasteBanksController::class, 'create'])->name('waste_bank.create');
 Route::post('/admin/waste_bank/create', [WasteBanksController::class, 'store'])->name('waste_bank.store');
+Route::get('/admin/waste_bank/{id}/edit',[WasteBanksController::class, 'edit'])->name('waste_bank.edit');
+Route::post('/admin/waste_bank/{id}/edit',[WasteBanksController::class, 'update'])->name('waste_bank.update');
+Route::delete('/admin/waste_bank/{id}/destroy',[WasteBanksController::class, 'destroy'])->name('waste_bank.destroy');
 
 
 Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');

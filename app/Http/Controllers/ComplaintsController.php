@@ -12,7 +12,13 @@ class ComplaintsController extends Controller
      */
     public function index()
     {
-        //
+        $waste_banks = waste_banks::all();
+        $users = User::all();
+        $trash_categories = trash_categories::all();
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        return view('admin.waste_bank.index', compact(['waste_banks', 'users', 'trash_categories']));
     }
 
     /**

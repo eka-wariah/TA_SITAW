@@ -22,7 +22,7 @@
                   <label for="Select" class="form-label col-sm-3 col-form-label">Nama Warga</label>
                   <div class="col-sm-9">
                   <select id="Select" name="usr_id" class="form-control" required>
-                  <option hidden  value="">Pilih Nama Warga</option>
+                  <option hidden  value="{{ $editWasteBanks->wtb_name_id }}">{{ $editWasteBanks->user->name }}</option>
                   @foreach ($users as  $users)
                     <option value="{{ $users->usr_id }}">{{ $users->name }}</option>
                   @endforeach
@@ -36,7 +36,7 @@
                     <label for="Select" class="form-label col-sm-3 col-form-label">Kategori Sampah</label>
                     <div class="col-sm-9">
                     <select id="Select" name="trc_id" class="form-control" required>
-                    <option hidden  value="">Pilih Kategori Sampah</option>
+                    <option hidden  value="{{ $editWasteBanks->wtb_category_trash_id}}">{{ $editWasteBanks->trash_categories->trc_name}}</option>
                     @foreach ($trash_categories as  $trash_categories)
                       <option value="{{ $trash_categories->trc_id }}">{{ $trash_categories->trc_name }}</option>
                     @endforeach
@@ -49,7 +49,7 @@
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">total sampah/kg</label>
                     <div class="col-sm-9">
-                      <input type="number" name="wtb_total_wate" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Nama Jurusan Wajib Diisi')" 
+                      <input type="number" name="wtb_total_wate" value="{{$editWasteBanks->wtb_total_wate}}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Nama Jurusan Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
                     @error('wtb_total_wate')

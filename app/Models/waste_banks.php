@@ -34,6 +34,13 @@ class waste_banks extends Model
             if ($waste_bank->trash_categories) {
                 // Hitung total uang = jumlah sampah * harga kategori
                 $waste_bank->wtb_total_money = $waste_bank->wtb_total_wate * $waste_bank->trash_categories->trc_price;
+
+                $user = $waste_bank->user;  // Ambil user terkait
+                if ($user) {
+                    // Menambahkan total uang dari bank sampah ke total uang user
+                    $user->total_money += $waste_bank->wtb_total_money;
+                    $user->save(); // Simpan perubahan
+                }
             }
         });
     }

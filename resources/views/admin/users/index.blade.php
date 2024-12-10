@@ -67,6 +67,7 @@
                                 <th width="10%">No</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Saldo</th>
                                 <th>Registered At</th>
                                 <th>Aksi</th>
                                 
@@ -79,6 +80,7 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->total_money }}</td>
                                 <td>{{ $user->created_at->format('d M Y H:i') }}</td>
                                 <td>
                                         <button type="submit" onclick="confirmDelete('{{ route('users.destroy', $user->usr_id) }}')" class="btn btn-danger">Delete</button>
@@ -136,6 +138,7 @@
                                 <th width="10%">No</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Saldo</th>
                                 <th>Registered At</th>
                                 <th>Aksi</th>
                                 

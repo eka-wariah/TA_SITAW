@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SITAW | Daftar Bank Sampah
+    SITAW | Daftar Kategori Sampah
 @endsection
 
 @section('content')
@@ -30,6 +30,7 @@
                                 <th>Kategori</th>
                                 <th>Jumlah Sampah</th>
                                 <th>Jumlah Uang</th>
+                                <th>Aksi</th>
                                 
                             </tr>
                             <!-- end row -->
@@ -40,12 +41,12 @@
                             <tr>
                                 
                                 <td>{{$no+1}}</td>
-                                <td>{{ $waste_banks->wtb_name_id}}</td>
-                                <td>{{ $waste_banks->wtb_category_trash_id}}</td>
+                                <td>{{ $waste_banks->user->name}}</td>
+                                <td>{{ $waste_banks->trash_categories->trc_name}}</td>
                                 <td>{{ $waste_banks->wtb_total_wate}}</td>
                                 <td>{{ $waste_banks->wtb_total_money}}</td>
                                 <td>
-                                     <a href="/admin/waste_bank/{{ $waste_banks->wtb_id}}/edit" class="btn btn-primary">Edit</a>
+                                     <a href="/admin/waste_bank/{{$waste_banks->wtb_id}}/edit" class="btn btn-primary">Edit</a>
                                      <a href="/admin/waste_bank/{{ $waste_banks->wtb_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
 
                                 </td>
@@ -54,7 +55,7 @@
                                 
                             </tr>
                             @endforeach
-                            <!-- end row -->
+                            <!-- end row --> 
                             
                         </tbody>
                         <tfoot>
@@ -64,7 +65,9 @@
                             <tr>
                                 <th width="10%">No</th>
                                 <th>Nama</th>
-                                <th>Harga</th>
+                                <th>Kategori</th>
+                                <th>Jumlah Sampah</th>
+                                <th>Jumlah Uang</th>
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->

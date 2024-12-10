@@ -54,6 +54,13 @@ class WasteBanksController extends Controller
 
             
         ]);
+        $waste_banks->refresh();  // Refresh model untuk mendapatkan nilai wtb_total_money setelah perhitungan
+    $user = $waste_banks->user;
+    if ($user) {
+        $user->total_money += $waste_banks->wtb_total_money;
+        $user->save();
+    }
+
 
             Alert::success('Berhasil Menambah', 'Jurusan Berhasil Ditambah');
             return redirect('/admin/waste_bank');
@@ -70,24 +77,35 @@ class WasteBanksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(waste_banks $waste_banks)
+    public function edit(waste_banks $waste_banks, $id)
     {
-        //
+        $editWasteBanks = waste_banks::findOrFail($id); 
+        $trash_categories = trash_categories::all();
+        $users = User::all();       
+        return view('admin.waste_bank.edit',compact(['editWasteBanks', 'trash_categories', 'users']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, waste_banks $waste_banks)
+    public function update(Request $request, waste_banks $waste_banks, $id)
     {
-        //
+        $updateWasteBanks = waste_banks::findOrFail($id); 
+        $updateWasteBanks->wtb_name_id = $request->usr_id;
+        $updateWasteBanks->wtb_category_trash_id = $request->trc_id;
+        $updateWasteBanks->wtb_total_wate=$request->wtb_total_wate;
+        $updateWasteBanks->save();
+        return redirect('/admin/waste_bank');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(waste_banks $waste_banks)
+    public function destroy(waste_banks $waste_banks, $id)
     {
-        //
+        $destroyWasteBanks = waste_banks::findOrFail($id);
+        //dd ($destroyScopeCategories);
+        $destroyWasteBanks->delete();
+        return redirect('/admin/waste_bank');
     }
 }
