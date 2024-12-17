@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentCategoriesController;
 use App\Http\Controllers\WasteBanksController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,8 +36,9 @@ Route::get('/register2',function(){
     return view('auth.register2');
 });
 
-Route::get('/admin/administrator', [AdministratorsController::class, 'index'])->name('administrator');
 
+
+Route::get('/admin/home', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/admin/scope_category', [ScopeCategoriesController::class, 'index'])->name('scope_category');
 Route::get('/admin/scope_category/create', [ScopeCategoriesController::class, 'create'])->name('scope_category.create');
@@ -69,3 +71,9 @@ Route::delete('/admin/waste_bank/{id}/destroy',[WasteBanksController::class, 'de
 
 Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
 Route::delete('/admin/users/{id}',[UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/admin/administrator', [AdministratorsController::class, 'index'])->name('administrator');
+Route::get('/admin/administrator/create', [AdministratorsController::class, 'create'])->name('administrator.create');
+Route::post('/admin/administrator/create', [AdministratorsController::class, 'store'])->name('administrator.store');
+Route::get('/admin/administrator/{id}/edit',[AdministratorsController::class, 'edit'])->name('administrator.edit');
+Route::post('/admin/administrator/{id}/edit',[AdministratorsController::class, 'update'])->name('administrator.update');

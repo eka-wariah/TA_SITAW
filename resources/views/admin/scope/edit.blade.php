@@ -19,12 +19,22 @@
             @csrf
             <div class="card-body">
                 <div class="mb-4 row align-items-center">
-                  <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">Nama Kategori</label>
+                  <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">Lingkup Wilayah</label>
                   <div class="col-sm-9">
-                    <input type="text" name="scs_name" value="{{$editScopeCategories->scs_name}}" class="form-control" id="exampleInputText1"  required oninvalid="this.setCustomValidity('Nama Jurusan Wajib Diisi')" 
+                    <input type="text" name="scs_level" value="{{$editScopeCategories->scs_level}}" class="form-control" id="exampleInputText1"  required oninvalid="this.setCustomValidity('Nama Jurusan Wajib Diisi')" 
                     onchange="this.setCustomValidity('')">
                   </div>
-                  @error('scs_name')
+                  @error('scs_level')
+                    <div>error</div>
+                  @enderror
+                </div>
+                <div class="mb-4 row align-items-center">
+                  <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">Nomor</label>
+                  <div class="col-sm-9">
+                    <input type="number" name="scs_number" value="{{$editScopeCategories->scs_number}}" class="form-control" id="exampleInputText1"  required oninvalid="this.setCustomValidity('Nama Jurusan Wajib Diisi')" 
+                    onchange="this.setCustomValidity('')">
+                  </div>
+                  @error('scs_number')
                     <div>error</div>
                   @enderror
                 </div>

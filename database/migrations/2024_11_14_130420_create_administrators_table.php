@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('administrators', function (Blueprint $table) {
             $table->bigIncrements('adm_id');
             $table->unsignedBigInteger('adm_name_id');
-            $table->unsignedBigInteger('adm_email_id');
             $table->unsignedBigInteger('adm_scope_management_id');
             $table->timestamps();
             $table->renameColumn('updated_at', 'adm_updated_at');
@@ -32,7 +31,6 @@ return new class extends Migration
             $table->foreign('adm_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('adm_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('adm_name_id')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->foreign('adm_email_id')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('adm_scope_management_id')->references('scs_id')->on('scope_categories')->onDelete('cascade');
         });
     }

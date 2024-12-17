@@ -1,4 +1,4 @@
-@extends('admin.master_admin')
+@extends('admin.master_member')
 
 @push('link')
     <link rel="stylesheet" href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SITAW | Daftar Kategori Lingkup Wilayah
+    SITAW | Daftar Kategori Sampah
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="mb-5 position-relative">
                     <h4 class="card-title mb-0">Daftar Kategori</h4>
-                    <a href="/admin/scope_category/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Kategori</a>
+                    <a href="/admin/trash_category/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Kategori</a>
                 </div>
                 <p class="card-subtitle mb-3">
                     
@@ -26,25 +26,24 @@
                             <!-- start row -->
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Lingkup Wilayah</th>
-                                <th>Nomor</th>
+                                <th>Nama Kategori Sampah</th>
+                                <th>Harga</th>
                                 <th>Aksi</th>
-
                                 
                             </tr>
                             <!-- end row -->
                         </thead>
                         <tbody>
                             <!-- start row -->
-                            @foreach ($scope_categories as $no=>$scope_categories)
+                            @foreach ( $trash_categories as $no=> $trash_categories)
                             <tr>
                                 
                                 <td>{{$no+1}}</td>
-                                <td>{{$scope_categories->scs_level}}</td>
-                                <td>{{$scope_categories->scs_number}}</td>
+                                <td>{{ $trash_categories->trc_name}}</td>
+                                <td>{{ $trash_categories->trc_price}}</td>
                                 <td>
-                                     <a href="/admin/scope_category/{{$scope_categories->scs_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/admin/scope_category/{{$scope_categories->scs_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                                     <a href="/admin/trash_category/{{ $trash_categories->trc_id}}/edit" class="btn btn-primary">Edit</a>
+                                     <a href="/admin/trash_category/{{ $trash_categories->trc_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
 
                                 </td>
 
@@ -61,10 +60,9 @@
 
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Lingkup Wilayah</th>
-                                <th>Nomor</th>
+                                <th>Nama</th>
+                                <th>Harga</th>
                                 <th>Aksi</th>
-
                             </tr>
                             <!-- end row -->
                         </tfoot>

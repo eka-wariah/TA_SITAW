@@ -36,7 +36,8 @@ class ScopeCategoriesController extends Controller
     {
         //dd($request);
         $createScopeCategories = scope_categories::create([
-            'scs_name' => $request->scs_name
+            'scs_level' => $request->scs_level,
+            'scs_number' => $request->scs_number
         ]);
         Alert::success('Berhasil Menambah', 'Berhasil menambahkan kategori lingkup wilayah');
 
@@ -69,7 +70,8 @@ class ScopeCategoriesController extends Controller
     public function update(Request $request, scope_categories $scope_categories, $id)
     {
         $updateScopeCategories = scope_categories::findOrFail($id); 
-        $updateScopeCategories->scs_name = $request->scs_name;
+        $updateScopeCategories->scs_level = $request->scs_level;
+        $updateScopeCategories->scs_number = $request->scs_number;
         $updateScopeCategories->save();
         return redirect('/admin/scope_category');
     }

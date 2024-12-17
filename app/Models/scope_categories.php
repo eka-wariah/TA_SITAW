@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class scope_categories extends Model
 {
     use HasFactory, SoftDeletes ;
+    protected $table = 'scope_categories';
     protected $primaryKey = 'scs_id';
     protected $guarded = [];
 
